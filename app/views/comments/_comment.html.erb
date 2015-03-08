@@ -1,21 +1,19 @@
 
 <div class="well">
   <p>
-    <%= comment.votes %>
-    <blockquote>
-      <%= comment.text %>
-    </blockquote>
-  </p>
-
-  <p>
-    <span class="text-muted">Added by <strong><%= comment.user_id %></strong> 
-      <%= time_ago_in_words(comment.updated_at) %> ago.
+    <span class="text-muted">
+      <strong><%= comment.user.email %></strong> |
+      <%= comment.votes %> points |
+      <%= time_ago_in_words(comment.updated_at) %> ago |
     </span>
     <span>
       <% from_reply_form ||= nil %>
       <% unless from_reply_form %>
-        <%= link_to 'reply', post_new_comment_path(@post, comment) %>
+        | <%= link_to 'reply', post_new_comment_path(@post, comment) %>
       <% end %>
     </span>
+  </p>
+  <p>
+    <blockquote><%= comment.text %></blockquote>
   </p>
 </div>

@@ -2,10 +2,13 @@
 
 <div class="jumbotron">
   <div class="container">
+    <span class="text-muted"><strong><%= @post.user.email %></strong> | 
+      <%= @post.votes %> votes | 
+      <%= time_ago_in_words(@post.updated_at) %> ago
+    </span>
     <h2><%= @post.title %></h2>
     <p><%= @post.url %></p>
     <p><%= @post.description %></p>
-    <p><%= @post.votes %></p>
   </div>
 </div>
 
