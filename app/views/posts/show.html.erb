@@ -1,25 +1,20 @@
 <p id="notice"><%= notice %></p>
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
-<p>
-  <strong>Url:</strong>
-  <%= @post.url %>
-</p>
-<p>
-  <strong>Votes:</strong>
-  <%= @post.votes %>
-</p>
+
+<div class="jumbotron">
+  <div class="container">
+    <h2><%= @post.title %></h2>
+    <p><%= @post.url %></p>
+    <p><%= @post.description %></p>
+    <p><%= @post.votes %></p>
+  </div>
+</div>
+
+<p><%= link_to 'Add new comment', post_new_comment_path(@post), 
+          class: 'btn btn-primary btn-lg' %></p>
 
 <h3>Comments:</h3>
-<table>
-<%= render @comments %>
-</table>
+  <%= comments_tree_for @comments %>
 <br>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

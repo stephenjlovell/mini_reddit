@@ -1,5 +1,3 @@
 <p>All Comments:</p>
 
-<% @comments.each do |c| %>
-<%= render 'comment' %>
-<%= end %>
+<%= comments_tree_for @comments %>

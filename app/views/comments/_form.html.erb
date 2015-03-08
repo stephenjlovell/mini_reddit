@@ -1,0 +1,11 @@
+<%= form_for([@post, @comment]) do |f| %>
+
+  <%= f.hidden_field :parent_id %>
+  <%= f.hidden_field :post_id %>
+ 
+  <div class="form-group">
+    <%= f.text_field :text, class: 'form-control' %>
+  </div>
+ 
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
