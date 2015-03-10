@@ -11,7 +11,15 @@ class CommentsController < ApplicationController
      
   def create
     @post = Post.find(params[:post_id])
-    @comment = current_user.comments.build(comment_params)
+    create_params = comment_params.merge({user_id: current_user.id, votes: 0})
+
+    if create_params[:parent_id].to_i > 0
+      parent = Comment.find_by_id(create_params.delete(:parent_id))
+      @comment = parent.children.build(create_params)
+    else
+      @comment = Comment.new(create_params)
+    end
+
 
     if @comment.save
       flash[:success] = "Your comment was successfully added: #{@comment.inspect}"
