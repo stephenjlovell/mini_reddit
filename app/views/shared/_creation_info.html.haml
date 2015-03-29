@@ -1,0 +1,3 @@
+%span.text-muted
+  %strong= object.user.username
+  | #{object.votes} votes | #{time_ago_in_words(object.updated_at)} ago

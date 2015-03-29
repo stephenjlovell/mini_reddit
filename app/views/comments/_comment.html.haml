@@ -1,13 +1,9 @@
-.well
-  %p
-    %span.text-muted
-      %strong= comment.user.email
-      |
-      \#{comment.votes} points |
-      \#{time_ago_in_words(comment.updated_at)} ago |
-    %span
-      - from_reply_form ||= nil
-      - unless from_reply_form
-        = link_to 'reply', post_new_comment_path(@post, comment)
-  %p
-  %blockquote= comment.text
+.container-fluid.well
+  .col-md-1
+    = render partial: "shared/voting", locals: {votes: comment.votes}
+  .col-md-11
+    = render partial: "shared/creation_info", locals: {object: comment}
+    - from_reply_form ||= nil
+    - unless from_reply_form
+      = link_to 'reply', post_new_comment_path(@post, comment)
+    %blockquote= comment.text

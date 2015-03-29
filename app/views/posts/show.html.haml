@@ -1,22 +1,18 @@
-%p#notice= notice
 .jumbotron
-  %span.text-muted
-    %strong= @post.user.email
-    |
-    \#{@post.votes} votes |
-    \#{time_ago_in_words(@post.updated_at)} ago
+  = render partial: "shared/creation_info", locals: {object: @post}
   %h2= @post.title
   %p= @post.url
   %p= @post.description
+  - if current_user.id == @post.user.id
+    = link_to 'Edit', edit_post_path(@post), class: "btn btn-primary"
 %p
-  = link_to 'Add new comment', post_new_comment_path(@post), |
-    class: 'btn btn-primary btn-lg'                          |
-%select
-  %option{:value => "votes"} Top
-  %option{:value => "created_at"} Recent
-%section.comments-list
+  = link_to 'Add new comment', post_new_comment_path(@post), class: 'btn btn-primary btn-lg'
+
+%section#comments-list
   %h3 Comments:
+  %p
+    %select
+      %option{:value => "votes"} Top
+      %option{:value => "created_at"} Recent
   %div= comments_tree_for(tree: @comments, order: :votes)
-= link_to 'Edit', edit_post_path(@post)
-|
-= link_to 'Back', posts_path
+%p= link_to 'Back', posts_path, class: "btn btn-default"
