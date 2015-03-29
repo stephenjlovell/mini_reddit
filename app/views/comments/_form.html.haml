@@ -1,0 +1,6 @@
+= form_for([@post, @comment]) do |f|
+  = f.hidden_field :parent_id
+  = f.hidden_field :post_id
+  .form-group
+    = f.text_field :text, class: 'form-control'
+  = f.submit class: 'btn btn-primary'

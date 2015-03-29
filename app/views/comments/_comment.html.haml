@@ -1,0 +1,13 @@
+.well
+  %p
+    %span.text-muted
+      %strong= comment.user.email
+      |
+      \#{comment.votes} points |
+      \#{time_ago_in_words(comment.updated_at)} ago |
+    %span
+      - from_reply_form ||= nil
+      - unless from_reply_form
+        = link_to 'reply', post_new_comment_path(@post, comment)
+  %p
+  %blockquote= comment.text
