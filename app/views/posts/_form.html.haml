@@ -7,17 +7,17 @@
       %ul
         - @post.errors.full_messages.each do |message|
           %li= message
-  .field
+  %p.field
     = f.label :title
     %br/
     = f.text_field :title
-  .field
+  %p.field
     = f.label :description
     %br/
     = f.text_area :description
-  .field
-    = f.label :url
+  %p.field
+    = f.label :url, "URL"
     %br/
     = f.url_field :url
-  .actions
-    = f.submit
+  %p.actions
+    = f.submit "Update", class: "btn btn-primary btn-default"
