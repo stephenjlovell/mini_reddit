@@ -3,7 +3,7 @@
   %h2= @post.title
   %p= @post.url
   %p= @post.description
-  - if current_user.id == @post.user.id
+  - if current_user && current_user.id == @post.user.id
     = link_to 'Edit', edit_post_path(@post), class: "btn btn-primary"
 %p
   = link_to 'Add new comment', post_new_comment_path(@post), class: 'btn btn-primary btn-lg'

@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     @post = Post.find(params[:post_id])
     @comments = @post.comments.hash_tree
