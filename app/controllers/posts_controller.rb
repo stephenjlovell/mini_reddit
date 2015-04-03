@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = Post.new(subreddit_id: params[:subreddit_id])
   end
 
   def create
@@ -43,6 +43,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :url)
+    params.require(:post).permit(:title, :description, :url, :subreddit_id)
   end
 end

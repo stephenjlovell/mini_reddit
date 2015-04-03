@@ -1,0 +1,11 @@
+%h2 Welcome to r/#{@subreddit.name}
+%p= @subreddit.description
+.col-md-11
+  %p= link_to 'New Post', new_post_path(@subreddit.id), class: "btn btn-primary"
+  = render @posts
+
+.col-md-1
+  %h4 Mods:
+  %ul
+    - @subreddit.moderators.each do |mod|
+      %li= mod.username
