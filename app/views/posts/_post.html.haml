@@ -3,6 +3,6 @@
     = render partial: "shared/voting", locals: {votes: post.votes}
   %span.text-muted.col-md-11
     .strong= link_to post.title, post
-    submitted #{time_ago_in_words(post.created_at)} ago by #{post.user.username} to ____
+    submitted #{time_ago_in_words(post.created_at)} ago by #{post.user.username} to r/#{post.subreddit.name}
     %br/
-    #{pluralize(post.comments.count, "comment")}
+    #{pluralize(post.comments_count, "comment")}

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: "home#index"
-  resources :home, only: :index
+  root to: "home#show"
+  resources :home, only: :show
 
   devise_for :users
   
@@ -11,8 +11,10 @@ Rails.application.routes.draw do
     get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
   end
 
-  resources :subreddits
-
+  resources :subreddits do
+    put '/subscribe', to: 'subreddits#subscribe', as: :subscribe
+    put '/unsubscribe', to: 'subreddits#unsubscribe', as: :unsubscribe
+  end
 
 end
 

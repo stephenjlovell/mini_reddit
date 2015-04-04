@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  def index
-
+  def show
+    @posts = Post.all
   end
 end
